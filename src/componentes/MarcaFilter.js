@@ -24,7 +24,7 @@ const MarcaFilter = props => {
             <option value="Nissan">Nissan</option>
             <option value="Mercedes">Mercedes</option>
             <option value="Mazda">Mazda</option>
-            <option value="Opel">Opel</option>           
+            <option value="Opel">Opel</option>
           </Form.Control>
         </Form.Group>
       </Form>

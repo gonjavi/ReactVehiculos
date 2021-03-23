@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const borrarCarroApi = id => {
-  axios.delete(`http://localhost:5000/carro/borrar/${id}`)
+  axios.delete(`http://localhost:3001/vehiculo/${id}`)
     .then(res => {
       if (res.error) {
         throw (res.error);

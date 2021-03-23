@@ -1,51 +1,74 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BorrarCarroApi from '../actions/borrarCarro';
 import { Link } from 'react-router-dom';
+import BorrarCarroApi from '../actions/borrarCarro';
 
 const Carro = props => {
-  const { 
-   vehiculo
+  const {
+    vehiculo,
   } = props;
-    
-  const { id, linea, marca, modelo, foto } = vehiculo;
-  
-  function borrarCarro() {    
-     BorrarCarroApi(id);
-     window.location.reload(false);
-  } 
 
-  return (            
+  const {
+    id, linea, marca, modelo, foto,
+  } = vehiculo;
+  /* console.log(object); */
+  function borrarCarro() {
+    BorrarCarroApi(id);
+    window.location.reload(false);
+  }
+
+  return (
     <div key={id} className="carro">
       <div className="cuadro">
         <ul className="titulo">
-          <li> Linea: {linea}</li>
-          <li> Marca: {marca}</li> 
-          <li> Modelo: {modelo}</li>
+          <li>
+            {' '}
+            Linea:
+            {linea}
+          </li>
+          <li>
+            {' '}
+            Marca:
+            {marca}
+          </li>
+          <li>
+            {' '}
+            Modelo:
+            {modelo}
+          </li>
           <li><button className="borrarActualizar" onClick={borrarCarro}>Eliminar</button></li>
-          <li> <Link className="borrarActualizar" to={{
-            pathname: `actualizar/${id}`,
-              actualizarProps: {
-              vehiculo: {vehiculo}              
-            }}}>Actualizar</Link></li>  
+          <li>
+            {' '}
+            <Link
+              className="borrarActualizar"
+              to={{
+                pathname: `actualizar/${id}`,
+                actualizarProps: {
+                  vehiculo: { vehiculo },
+                },
+              }}
+            >
+              Actualizar
+            </Link>
+          </li>
         </ul>
       </div>
-      <img 
-        className='picture'   
+      <img
+        className="picture"
         alt={linea}
-        width = '50%'
-        height = '60%'
+        width="50%"
+        height="60%"
         src={foto}
       />
-     
+
     </div>
-  );   
+  );
 };
 Carro.defaultProps = {
- vehiculo: {},
+  vehiculo: {},
 };
 
 Carro.propTypes = {
-  vehiculo: PropTypes.objectOf(PropTypes.any),  
+  vehiculo: PropTypes.objectOf(PropTypes.any),
 };
 export default Carro;

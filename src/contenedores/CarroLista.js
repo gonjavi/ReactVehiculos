@@ -21,14 +21,14 @@ class CarroLista extends React.Component {
     changeFilter(category);
   }
 
-  render() {    
+  render() {
     const { carrosLista, filter } = this.props;
     const { recordset, loading, error } = carrosLista;
     if (loading) {
       return <div> Loading...</div>;
-    } else if (error) {
-      return <div>{typeof(error)}</div>; 
-    } else if (recordset) {
+    } if (error) {
+      return <div>{(error)}</div>;
+    } if (recordset) {
       let NuevaCarroLista;
       if (filter === 'Todos') {
         NuevaCarroLista = recordset.map(
@@ -40,10 +40,10 @@ class CarroLista extends React.Component {
         const carroListaFiltered = recordset.filter(carro => carro.marca === filter);
         NuevaCarroLista = carroListaFiltered.map(
           vehiculo => (
-            <Carro vehiculo={vehiculo} key={vehiculo.id} />        
+            <Carro vehiculo={vehiculo} key={vehiculo.id} />
           ),
         );
-      }  
+      }
       return (
         <Container>
           <Row className="text-center">
@@ -51,12 +51,12 @@ class CarroLista extends React.Component {
               <h1 className="title">Automoviles</h1>
             </Col>
           </Row>
-         <Row>
-          <Col xs={12} md={12} >         
-            <NavLink to="/grafica" className="back"><h5 className="back">Ir a graficas</h5></NavLink>
-          </Col>
-        </Row>
-          <Row className='mt-2'>
+          <Row>
+            <Col xs={12} md={12}>
+              <NavLink to="/grafica" className="back"><h5 className="back">Ir a graficas</h5></NavLink>
+            </Col>
+          </Row>
+          <Row className="mt-2">
             <Col xs={12} md={5} lg={4}>
               <MarcaFilter handleFilterChange={this.handleFilterChange} />
             </Col>
@@ -68,13 +68,10 @@ class CarroLista extends React.Component {
             <RegistrarCarro />
           </Row>
         </Container>
-      ); 
+      );
     }
-
   }
 }
-
-
 
 CarroLista.propTypes = {
   carrosLista: PropTypes.objectOf(PropTypes.any),
@@ -83,7 +80,7 @@ CarroLista.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  carrosLista: state.carrosLista, 
+  carrosLista: state.carrosLista,
   changeFilter: PropTypes.func.isRequired,
   filter: state.filter,
 });
