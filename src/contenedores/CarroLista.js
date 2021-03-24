@@ -36,7 +36,8 @@ class CarroLista extends React.Component {
     if (filter === 'Todos') {
       NuevaCarroLista = recordset.map(
         vehiculo => (
-          <Carro vehiculo={vehiculo} key={vehiculo.id} />
+          // eslint-disable-next-line no-underscore-dangle
+          <Carro vehiculo={vehiculo} key={vehiculo._id} />
         ),
       );
     } else {

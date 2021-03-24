@@ -17,7 +17,6 @@ const Grafica = props => {
   const total = recordset.length;
 
   const totalMercedes = recordset.filter(element => element.marca === 'Mercedes').length;
-
   const totalNissan = recordset.filter(element => element.marca === 'Nissan').length;
   const totalMazda = recordset.filter(element => element.marca === 'Mazda').length;
   const totalOpel = recordset.filter(element => element.marca === 'Opel').length;

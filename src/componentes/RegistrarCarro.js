@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { registrar } from '../actions/registrar';
 
-const RegistrarCarro = props => {
+const RegistrarCarro = () => {
   const [linea, setLinea] = useState('');
   const [marca, setMarca] = useState('');
   const [modelo, setModelo] = useState('');
@@ -17,7 +16,6 @@ const RegistrarCarro = props => {
 
   const submitHandler = () => {
     dispatch(registrar(linea, marca, modelo, color, foto));
-    props.history.push('/');
     window.location.reload();
   };
 
@@ -98,16 +96,6 @@ const RegistrarCarro = props => {
 
     </Form>
   );
-};
-
-RegistrarCarro.defaultProps = {
-  history: {},
-};
-
-RegistrarCarro.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.string,
-  }),
 };
 
 export default RegistrarCarro;
