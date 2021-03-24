@@ -5,7 +5,7 @@ const borrarCarroApi = async id => {
     .then(res => {
       window.location.reload(false);
       return res;
-    }).catch(error => console.log(error));
+    }).catch(error => error);
 };
 
 export default borrarCarroApi;

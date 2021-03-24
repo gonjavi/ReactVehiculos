@@ -1,32 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { registrar } from '../actions/registrar';
 
-function RegistrarCarro(props) {
+const RegistrarCarro = props => {
   const [linea, setLinea] = useState('');
   const [marca, setMarca] = useState('');
   const [modelo, setModelo] = useState('');
   const [color, setColor] = useState('');
   const [foto, setFoto] = useState('');
-  const carroRegistro = useSelector(state => state.carroRegistro);
-  const { carroInfo } = carroRegistro;
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (carroInfo) {
-      props.history.push('/');
-    }
-    return () => {
-
-    };
-  }, [carroInfo]);
-
-  const submitHandler = e => {
+  const submitHandler = () => {
     dispatch(registrar(linea, marca, modelo, color, foto));
+    props.history.push('/');
+    window.location.reload();
   };
 
   const crearImagenBase64 = file => {
@@ -106,6 +98,16 @@ function RegistrarCarro(props) {
 
     </Form>
   );
-}
+};
+
+RegistrarCarro.defaultProps = {
+  history: {},
+};
+
+RegistrarCarro.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.string,
+  }),
+};
 
 export default RegistrarCarro;

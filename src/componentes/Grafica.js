@@ -110,7 +110,7 @@ const Grafica = props => {
 };
 
 Grafica.propTypes = {
-  carrosLista: PropTypes.objectOf(PropTypes.any),
+  carrosLista: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 const mapStateToProps = state => ({

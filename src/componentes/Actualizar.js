@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { actualizar } from '../actions/actualizar';
 
@@ -13,44 +13,18 @@ const Actualizar = props => {
   const [modelo1, setModelo1] = useState('');
   const [color1, setColor1] = useState('');
   const [foto1, setFoto1] = useState('');
-  const carrosLista = useSelector(state => state.carrosLista);
-  const { recordset } = carrosLista;
-  const {
-    match,
-  } = props;
+  const { match } = props;
   const { params } = match;
   const { id } = params;
 
-  let carro;
-  for (const key in recordset) {
-    if (Object.prototype.valueOf.call(recordset, key)) {
-      if (key === id) {
-        carro = recordset[key];
-      }
-    }
-  }
-
-  const carroActualizado = useSelector(state => state.carroActualizado);
-  const { carroInfo } = carroActualizado;
-
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (carroInfo) {
-      props.history.push('/');
-    }
-    return () => {
-
-    };
-  }, [carroInfo]);
-
-  const submitHandler = e => {
+  const submitHandler = () => {
     dispatch(actualizar(id, linea1, marca1, modelo1, color1, foto1));
+    props.history.push('/');
+    window.location.reload();
   };
-  const handleImage = e => {
-    const Imagen = e.target.files[0];
-    crearImagenBase64(Imagen);
-  };
+
   const crearImagenBase64 = file => {
     const reader = new FileReader();
 
@@ -59,6 +33,11 @@ const Actualizar = props => {
     };
 
     reader.readAsDataURL(file);
+  };
+
+  const handleImage = e => {
+    const Imagen = e.target.files[0];
+    crearImagenBase64(Imagen);
   };
 
   return (
@@ -127,14 +106,15 @@ const Actualizar = props => {
   );
 };
 
-Actualizar.defaultProps = {
-
-};
 Actualizar.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
   }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.string.isRequired,
+  }).isRequired,
 };
+
 export default Actualizar;

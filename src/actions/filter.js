@@ -5,4 +5,4 @@ const changeFilter = category => ({
   category,
 });
 
-export { changeFilter };
+export default changeFilter;
