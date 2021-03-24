@@ -16,10 +16,10 @@ const Grafica = props => {
 
   const total = recordset.length;
 
-  const totalMercedes = recordset.filter(element => element.marca === 'Mercedes').length;
-  const totalNissan = recordset.filter(element => element.marca === 'Nissan').length;
-  const totalMazda = recordset.filter(element => element.marca === 'Mazda').length;
-  const totalOpel = recordset.filter(element => element.marca === 'Opel').length;
+  const totalMercedes = recordset.filter(element => element.marca === 'Mercedes' || element.marca === 'mercedes').length;
+  const totalNissan = recordset.filter(element => element.marca === 'Nissan' || element.marca === 'nissan').length;
+  const totalMazda = recordset.filter(element => element.marca === 'Mazda' || element.marca === 'mazda').length;
+  const totalOpel = recordset.filter(element => element.marca === 'Opel' || element.marca === 'opel').length;
   const porcentajeMercedes = Math.round((totalMercedes / total) * 100);
   const porcentajeNissan = Math.round((totalNissan / total) * 100);
   const porcentajeMazda = Math.round((totalMazda / total) * 100);
