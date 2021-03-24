@@ -30,8 +30,10 @@ const RegistrarCarro = () => {
   };
 
   const handleImage = e => {
-    const Imagen = e.target.files[0];
-    crearImagenBase64(Imagen);
+    if (foto) {
+      const Imagen = e.target.files[0];
+      crearImagenBase64(Imagen);
+    }
   };
 
   return (
