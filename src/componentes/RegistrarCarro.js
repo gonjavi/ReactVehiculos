@@ -28,10 +28,7 @@ function RegistrarCarro(props) {
   const submitHandler = e => {
     dispatch(registrar(linea, marca, modelo, color, foto));
   };
-  const handleImage = e => {
-    const Imagen = e.target.files[0];
-    crearImagenBase64(Imagen);
-  };
+
   const crearImagenBase64 = file => {
     const reader = new FileReader();
 
@@ -40,6 +37,11 @@ function RegistrarCarro(props) {
     };
 
     reader.readAsDataURL(file);
+  };
+
+  const handleImage = e => {
+    const Imagen = e.target.files[0];
+    crearImagenBase64(Imagen);
   };
 
   return (

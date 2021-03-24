@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
-import { traerCarros } from '../actions/carroAction';
+import traerCarros from '../actions/carroAction';
 import CarroLista from '../contenedores/CarroLista';
 import Grafica from './Grafica';
 import Actualizar from './Actualizar';

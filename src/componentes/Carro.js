@@ -9,16 +9,16 @@ const Carro = props => {
   } = props;
 
   const {
-    id, linea, marca, modelo, foto,
+    _id, linea, marca, modelo, foto,
   } = vehiculo;
-  /* console.log(object); */
+
   function borrarCarro() {
-    BorrarCarroApi(id);
+    BorrarCarroApi(_id);
     window.location.reload(false);
   }
 
   return (
-    <div key={id} className="carro">
+    <div key={_id} className="carro">
       <div className="cuadro">
         <ul className="titulo">
           <li>
@@ -36,13 +36,13 @@ const Carro = props => {
             Modelo:
             {modelo}
           </li>
-          <li><button className="borrarActualizar" onClick={borrarCarro}>Eliminar</button></li>
+          <li><button type="button" className="borrarActualizar" onClick={borrarCarro}>Eliminar</button></li>
           <li>
             {' '}
             <Link
               className="borrarActualizar"
               to={{
-                pathname: `actualizar/${id}`,
+                pathname: `actualizar/${_id}`,
                 actualizarProps: {
                   vehiculo: { vehiculo },
                 },

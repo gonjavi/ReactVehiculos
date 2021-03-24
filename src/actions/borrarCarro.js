@@ -1,14 +1,11 @@
 import axios from 'axios';
 
-const borrarCarroApi = id => {
-  axios.delete(`http://localhost:3001/vehiculo/${id}`)
+const borrarCarroApi = async id => {
+  await axios.delete(`http://localhost:3001/vehiculo/${id}`)
     .then(res => {
-      if (res.error) {
-        throw (res.error);
-      }
       window.location.reload(false);
       return res;
-    }).catch(error => error);
+    }).catch(error => console.log(error));
 };
 
 export default borrarCarroApi;
