@@ -2,6 +2,7 @@ import axios from 'axios';
 import config from '../config/config';
 
 const url = config.url.API_URL;
+console.log(url);
 
 export const CARRO_REGISTTRO_REQUEST = 'CARRO_REGISTTRO_REQUEST';
 export const CARRO_REGISTTRO_SUCCESS = 'CARRO_REGISTTRO_SUCCESS';
