@@ -1,4 +1,7 @@
 import axios from 'axios';
+import config from '../config/config';
+
+const url = config.url.API_URL;
 
 export const CARRO_REGISTTRO_REQUEST = 'CARRO_REGISTTRO_REQUEST';
 export const CARRO_REGISTTRO_SUCCESS = 'CARRO_REGISTTRO_SUCCESS';
@@ -13,7 +16,7 @@ const registrar = (linea, marca, modelo, color, foto) => async dispatch => {
   });
 
   try {
-    const { data } = await axios.post('http://localhost:3001/vehiculos',
+    const { data } = await axios.post(`${url}/vehiculos`,
       {
         linea, marca, modelo, color, foto,
       });

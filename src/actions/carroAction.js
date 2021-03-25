@@ -1,5 +1,8 @@
 import axios from 'axios';
+import config from '../config/config';
 import { CARROS_LIST_SUCCESS, CARROS_LIST_REQUEST, CARROS_LIST_FAIL } from '../constantes/carroConstantes';
+
+const url = config.url.API_URL;
 
 function fetchProductsSuccess(recordset) {
   return {
@@ -11,7 +14,7 @@ function fetchProductsSuccess(recordset) {
 function traerCarros() {
   return dispatch => {
     dispatch({ type: CARROS_LIST_REQUEST });
-    axios.get('http://localhost:3001/vehiculos')
+    axios.get(`${url}/vehiculos`)
       .then(res => {
         dispatch(fetchProductsSuccess(res.data.vehiculos));
       })
