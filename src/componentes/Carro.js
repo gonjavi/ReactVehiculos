@@ -42,7 +42,7 @@ const Carro = props => {
             <Link
               className="borrarActualizar"
               to={{
-                pathname: `actualizar/${_id}`,
+                pathname: `vehiculo/${_id}`,
                 actualizarProps: {
                   vehiculo: { vehiculo },
                 },

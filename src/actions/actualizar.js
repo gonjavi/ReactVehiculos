@@ -7,7 +7,7 @@ export const CARRO_ACTUALIZAR_FAIL = 'CARRO_ACTUALIZAR_FAIL';
 
 const url = config.url.API_URL;
 
-const actualizar = (id, linea, marca, modelo, color, foto) => async dispatch => {
+const actualizar = (_id, linea, marca, modelo, color, foto) => async dispatch => {
   dispatch({
     type: CARRO_ACTUALIZAR_REQUEST,
     payload: {
@@ -16,7 +16,7 @@ const actualizar = (id, linea, marca, modelo, color, foto) => async dispatch => 
   });
 
   try {
-    const { data } = await axios.put(`${url}/vehiculo/${id}`,
+    const { data } = await axios.put(`${url}/vehiculo/${_id}`,
       {
         linea, marca, modelo, color, foto,
       });

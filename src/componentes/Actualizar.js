@@ -15,12 +15,12 @@ const Actualizar = props => {
   const [foto1, setFoto1] = useState('');
   const { match } = props;
   const { params } = match;
-  const { id } = params;
+  const { _id } = params;
 
   const dispatch = useDispatch();
 
   const submitHandler = () => {
-    dispatch(actualizar(id, linea1, marca1, modelo1, color1, foto1));
+    dispatch(actualizar(_id, linea1, marca1, modelo1, color1, foto1));
     props.history.push('/');
     window.location.reload();
   };
@@ -109,11 +109,11 @@ const Actualizar = props => {
 Actualizar.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      _id: PropTypes.string.isRequired,
     }),
   }).isRequired,
   history: PropTypes.shape({
-    push: PropTypes.string.isRequired,
+    push: PropTypes.func.isRequired,
   }).isRequired,
 };
 

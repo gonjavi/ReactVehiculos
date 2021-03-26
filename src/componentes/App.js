@@ -48,7 +48,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={CarroLista} />
               <Route path="/grafica" component={Grafica} />
-              <Route path="/actualizar/:id" component={Actualizar} />
+              <Route path="/vehiculo/:_id" component={Actualizar} />
             </Switch>
 
           </main>
