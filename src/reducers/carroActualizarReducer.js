@@ -5,11 +5,22 @@ export const CARRO_ACTUALIZAR_FAIL = 'CARRO_ACTUALIZAR_FAIL';
 function carroActualizarReducer(state = {}, action) {
   switch (action.type) {
     case CARRO_ACTUALIZAR_REQUEST:
-      return { loading: true };
+      return {
+        ...state,
+        loading: true,
+      };
     case CARRO_ACTUALIZAR_SUCCESS:
-      return { loading: false, carroInfo: action.payload };
+      return {
+        ...state,
+        loading: false,
+        carroInfo: action.payload,
+      };
     case CARRO_ACTUALIZAR_FAIL:
-      return { loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default: return state;
   }
 }

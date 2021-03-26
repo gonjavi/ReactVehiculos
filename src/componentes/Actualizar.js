@@ -21,7 +21,7 @@ const Actualizar = props => {
 
   const submitHandler = () => {
     dispatch(actualizar(_id, linea1, marca1, modelo1, color1, foto1));
-    props.history.push('/');
+    //props.history.push('/');
     window.location.reload();
   };
 

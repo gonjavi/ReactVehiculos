@@ -6,7 +6,7 @@ const prod = {
 
 const dev = {
   url: {
-    API_URL: 'https://node-vehiculos-api.herokuapp.com',
+    API_URL: 'http://localhost:3001',
   },
 };
 

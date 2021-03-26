@@ -20,6 +20,7 @@ const actualizar = (_id, linea, marca, modelo, color, foto) => async dispatch =>
       {
         linea, marca, modelo, color, foto,
       });
+      console.log(data)
     dispatch({ type: CARRO_ACTUALIZAR_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: CARRO_ACTUALIZAR_FAIL, payload: error.message });
