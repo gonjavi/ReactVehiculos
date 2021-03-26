@@ -29,7 +29,13 @@ class CarroLista extends React.Component {
     }
 
     if (error) {
-      return <div>{(error)}</div>;
+      return (
+        <div>
+          {error.message}
+          {' '}
+          - Conexión de red rechazada
+        </div>
+      );
     }
 
     let NuevaCarroLista;

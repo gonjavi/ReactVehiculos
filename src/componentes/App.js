@@ -32,12 +32,9 @@ class App extends React.Component {
   }
 
   render() {
-    const { error } = this.props;
-    if (!this.shouldComponentRender()) return <div>Loading</div>;
     return (
       <BrowserRouter>
         <div className="App">
-          {error && <span className="error">{error}</span>}
           <Navbar bg="light" className=" justify-content-between" expand="lg">
             <Navbar.Brand className="ml-5">Automoviles</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -65,11 +62,9 @@ class App extends React.Component {
 }
 
 App.defaultProps = {
-  error: '',
   pending: true,
 };
 App.propTypes = {
-  error: PropTypes.string,
   traerCarros: PropTypes.func.isRequired,
   pending: PropTypes.bool,
 };

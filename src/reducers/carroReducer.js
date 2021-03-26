@@ -21,7 +21,7 @@ function carroListaReducer(state = { recordset: [] }, action) {
       return {
         ...state,
         loading: false,
-        error: action.error,
+        error: action.error || action.err,
       };
     default:
       return state;
