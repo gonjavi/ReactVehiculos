@@ -19,6 +19,11 @@ const registrar = (linea, marca, modelo, color, foto) => async dispatch => {
     const { data } = await axios.post(`${url}/vehiculos`,
       {
         linea, marca, modelo, color, foto,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
 
     dispatch({ type: CARRO_REGISTTRO_SUCCESS, payload: data });
