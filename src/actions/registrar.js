@@ -27,4 +27,4 @@ const registrar = (linea, marca, modelo, color, foto) => async dispatch => {
   }
 };
 
-export { registrar };
+export default registrar;

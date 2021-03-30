@@ -8,11 +8,11 @@ import { NavLink } from 'react-router-dom';
 import { actualizar } from '../actions/actualizar';
 
 const Actualizar = props => {
-  const [linea1, setLinea1] = useState('');
-  const [marca1, setMarca1] = useState('');
-  const [modelo1, setModelo1] = useState('');
-  const [color1, setColor1] = useState('');
-  const [foto1, setFoto1] = useState('');
+  const [linea, setLinea] = useState('');
+  const [marca, setMarca] = useState('');
+  const [modelo, setModelo] = useState('');
+  const [color, setColor] = useState('');
+  const [foto, setFoto] = useState('');
   const { match } = props;
   const { params } = match;
   const { _id } = params;
@@ -20,7 +20,7 @@ const Actualizar = props => {
   const dispatch = useDispatch();
 
   const submitHandler = () => {
-    dispatch(actualizar(_id, linea1, marca1, modelo1, color1, foto1));
+    dispatch(actualizar(_id, linea, marca, modelo, color, foto));
     props.history.push('/');
     window.location.reload();
   };
@@ -29,7 +29,7 @@ const Actualizar = props => {
     const reader = new FileReader();
 
     reader.onload = e => {
-      setFoto1(e.target.result);
+      setFoto(e.target.result);
     };
 
     reader.readAsDataURL(file);
@@ -52,7 +52,7 @@ const Actualizar = props => {
               required
               type="text"
               placeholder="linea"
-              onChange={e => setLinea1(e.target.value)}
+              onChange={e => setLinea(e.target.value)}
             />
           </Form.Group>
           <Form.Group as={Col} md="3" controlId="validationCustom01">
@@ -61,7 +61,7 @@ const Actualizar = props => {
               required
               type="text"
               placeholder="marca"
-              onChange={e => setMarca1(e.target.value)}
+              onChange={e => setMarca(e.target.value)}
             />
           </Form.Group>
 
@@ -71,7 +71,7 @@ const Actualizar = props => {
               required
               type="text"
               placeholder="modelo"
-              onChange={e => setModelo1(e.target.value)}
+              onChange={e => setModelo(e.target.value)}
             />
           </Form.Group>
           <Form.Group as={Col} md="3" controlId="validationCustom01">
@@ -80,7 +80,7 @@ const Actualizar = props => {
               required
               type="text"
               placeholder="color"
-              onChange={e => setColor1(e.target.value)}
+              onChange={e => setColor(e.target.value)}
             />
           </Form.Group>
           <Form.Group as={Col} md="3">

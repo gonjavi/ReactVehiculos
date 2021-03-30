@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { registrar } from '../actions/registrar';
+import registrar from '../actions/registrar';
 
-const RegistrarCarro = () => {
+const RegistrarCarro = props => {
   const [linea, setLinea] = useState('');
   const [marca, setMarca] = useState('');
   const [modelo, setModelo] = useState('');
   const [color, setColor] = useState('');
   const [foto, setFoto] = useState('');
+  const carroRegistro = useSelector(state => state.carroRegistro);
+  const { carroInfo } = carroRegistro;
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (carroInfo) {
+      props.history.push('/');
+    }
+    return () => {
+
+    };
+  }, [carroInfo]);
+
   const submitHandler = () => {
     dispatch(registrar(linea, marca, modelo, color, foto));
-    window.location.reload();
+  };
+  const handleImage = e => {
+    const Imagen = e.target.files[0];
+    // eslint-disable-next-line no-use-before-define
+    crearImagenBase64(Imagen);
   };
 
   const crearImagenBase64 = file => {
@@ -25,15 +41,7 @@ const RegistrarCarro = () => {
     reader.onload = e => {
       setFoto(e.target.result);
     };
-
     reader.readAsDataURL(file);
-  };
-
-  const handleImage = e => {
-    if (foto) {
-      const Imagen = e.target.files[0];
-      crearImagenBase64(Imagen);
-    }
   };
 
   return (
@@ -98,6 +106,16 @@ const RegistrarCarro = () => {
 
     </Form>
   );
+};
+
+RegistrarCarro.defaultProps = {
+  history: {},
+};
+
+RegistrarCarro.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
 };
 
 export default RegistrarCarro;
