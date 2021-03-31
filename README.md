@@ -2,6 +2,8 @@
  
  This app is able to create, edit, delete and update vehicles, including the brand, line of vehicle, color, year and image. This project uses react, redux, and fetch and push information to a backend project developed in NodeJs.
 
+ ![screenshot](./img/screenshot.png)
+
 ### Setup
 
 - Run $npm install   -to install all dependencies from a package.json file
